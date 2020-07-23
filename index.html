@@ -39,6 +39,14 @@
             $(document).ready(function(){
                 $(".page").load('index1.html');
             });
+            $(".nav-link").click(function(){
+                var url = this.id;
+                if(url == "" || url == null){
+                    url = "index1";
+                }
+                $(".page").html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
+                $(".page").load(url+'.html');
+            });
         </script>
     </body>
 </html>
