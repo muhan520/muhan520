@@ -54,10 +54,10 @@
                 $(".page").html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
                 $(".page").load(url+'.html');
             });
-            $("#content").keypress(function(){
+            $("#novel_content").keypress(function(){
                 var n_chapterid = $("#chapterid").val();
                 var n_title = $("#title").val();
-                var n_content = $("#content").val();
+                var n_content = $("#novel_content").val();
                 if(n_chapterid == "" || n_chapterid == null){
                     alert('请在撰写章节前输入章节id！！');
                     return false;
@@ -68,7 +68,7 @@
             $("#submit").click(function(){
                 var n_chapterid = $("#chapterid").val();
                 var n_title = $("#title").val();
-                var n_content = $("#content").val();
+                var n_content = $("#novel_content").val();
                 if(n_chapterid.length < 1){
                     alert("章节id必填！");
                     return false;
