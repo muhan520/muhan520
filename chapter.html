@@ -17,8 +17,13 @@
     }else{
         console.log(list);
         for(i=0;i<list.length;i++){
-            var list1 = "<a href='#"+list[i].id+"' >"+list[i].title+"</a>";
+            var list1 = "<p><a class='novel-link' href='javascript:;' id="+i+">"+list[i].title+"</a></p>";
             $("#c_list").append(list1);
         }
     }
+    $("#novel-link").click(function(){
+        var cid = this.id;
+        var content1 = list[cid].content;
+        $("#read_div").val(content1); 
+    });
 </script>
