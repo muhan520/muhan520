@@ -14,7 +14,7 @@
     var list = JSON.parse(localStorage.getItem('local_novel_list'));
     if(!list){
         alert("请您先创作一篇文章");
-        return ;
+        return false;
     }else{
         for(i=0;i<list.length;i++){
             var list1 = "<a href='#"+list[i].id+"' >"+list[i].title+"</a>";
