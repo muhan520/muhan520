@@ -24,8 +24,8 @@
     $(".novel-link").click(function(){
         var cid = this.id;
         var content1 = list[cid].content;
-        console.log(cid);
-        console.log(content1);
-        $("#read_div").val(content1); 
+        var title1 = list[cid].title;
+        var chapter1 = list[cid].chapterid;
+        $(".read_div").val("<p><h5>第"+chapter1+"章&nbsp;"+title1+"</h5></p><div>"+content1+"</div>"); 
     });
 </script>
