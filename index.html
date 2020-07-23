@@ -4,6 +4,11 @@
         <title>基佬之家</title>
     </head>
     <body>
+        <style>
+            .page{
+                margin-top:30px;
+            }
+        </style>
         <!--导航-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -14,15 +19,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#" id="index1">首页</a>
+                  <a class="nav-link" href="#index1" id="index1">首页</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" id="novel">小说</a>
+                  <a class="nav-link" href="#novel" id="novel">小说</a>
                 </li>
                 
               </ul>
               <div class="form-inline my-2 my-lg-0">
-                <a class="nav-link" href="#" id="othor">其它</a>
+                <a class="nav-link" href="#othor" id="othor">其它</a>
                  </div>
             </div>
           </nav>
@@ -47,6 +52,36 @@
                 $(".page").html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
                 $(".page").load(url+'.html');
             });
+            var maodian = window.location.hash;
+            if(maodian == "#novel"){
+            $("#content").keypress(function(){
+                var n_chapterid = $("#chapterid").val();
+                var n_title = $("#title").val();
+                var n_content = $("#content").val();
+                if(n_chapterid == "" || n_chapterid == null){
+                    alert('请在撰写章节前输入章节id！！');
+                    return false;
+                }else{
+                    localStorage.setItem('content_test',n_content);
+                }
+            });
+            $("#submit").click(function(){
+                var n_chapterid = $("#chapterid").val();
+                var n_title = $("#title").val();
+                var n_content = $("#content").val();
+                var novel_list = JSON.parse(localStorage.getItem('local_novel_list'));
+                if(!novel_list){
+                    novel_list = [];
+                }
+                novel_list.push({
+                    chpaterid : n_chapterid,
+                    title : n_title,
+                    content : n_content,
+                });
+                localStorage.setItem('local_novel_list',JSON.stringify(novel_list));
+                alert("存储章节成功！");
+            });
+            }
         </script>
     </body>
 </html>
