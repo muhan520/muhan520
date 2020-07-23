@@ -41,10 +41,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script>
             //页面初始化时，加载文件index1
+            var maodian = window.location.hash;
             $(document).ready(function(){
                 $(".page").load('index1.html');
             });
             $(".nav-link").click(function(){
+                console.log(maodian);
                 var url = this.id;
                 if(url == "" || url == null){
                     url = "index1";
@@ -52,7 +54,6 @@
                 $(".page").html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>');
                 $(".page").load(url+'.html');
             });
-            var maodian = window.location.hash;
             if(maodian == "#novel"){
             $("#content").keypress(function(){
                 var n_chapterid = $("#chapterid").val();
