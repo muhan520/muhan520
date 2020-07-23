@@ -51,7 +51,7 @@
                 }
                 novel_list.push({
                     chpaterid : n_chapterid,
-                    title : n_title,
+                    title : n_title.replace('↵','\n'),
                     content : n_content,
                 });
                 localStorage.setItem('local_novel_list',JSON.stringify(novel_list));

@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-3 col-lg-3 col-sm-3">
+        <div id="c_list" style="border:1px solid green;background-color:#EEFAEE;">
+
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-9 col-sm-9">
+        <div id="read_div" style="border:1px solid green;background-color:#EEFAEE;">
+            请选择要阅读的章节
+        </div>
+    </div>
+</div>
+<script>
+    var list = JSON.parse(localStorage.getItem('local_novel_list'));
+    if(!list){
+        alert("请您先创作一篇文章");
+        return ;
+    }else{
+        for(i=0;i<list.length;i++){
+            var list1 = "<a href='#"+list[i].id+"' >"+list[i].title+"</a>";
+            $("c_list").append(list1);
+        }
+    }
+</script>
