@@ -14,7 +14,8 @@
     <button class="btn btn-primary" id="submit">存入！</button>
   </div>
   <div class="alert alert-primary" role="alert">
- 文章会实时保存在浏览器端，但在撰写前，请先输入章节id～
+ 文章会实时保存在浏览器端，不会进行云端同步，其实不是很可信😊<a href="javascript:;" id="huifu">恢复草稿</a>
+ <p>恢复前请注意，您没有再次输入信息来填充保存的数据！！</p>
   </div>
   <script>
     $("#novel_content").keypress(function(){
@@ -55,5 +56,9 @@
                 });
                 localStorage.setItem('local_novel_list',JSON.stringify(novel_list));
                 alert("存储章节成功！");
+            });
+            $("#huifu").click(function(){
+              $("#novel_content").val(localStorage.getItem('content_test'));
+              alert('恢复成功');
             });
   </script>
