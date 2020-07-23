@@ -16,3 +16,44 @@
   <div class="alert alert-primary" role="alert">
  文章会实时保存在浏览器端，但在撰写前，请先输入章节id～
   </div>
+  <script>
+    $("#novel_content").keypress(function(){
+                var n_chapterid = $("#chapterid").val();
+                var n_title = $("#title").val();
+                var n_content = $("#novel_content").val();
+                if(n_chapterid == "" || n_chapterid == null){
+                    alert('请在撰写章节前输入章节id！！');
+                    return false;
+                }else{
+                    localStorage.setItem('content_test',n_content);
+                }
+            });
+            $("#submit").click(function(){
+                var n_chapterid = $("#chapterid").val();
+                var n_title = $("#title").val();
+                var n_content = $("#novel_content").val();
+                if(n_chapterid.length < 1){
+                    alert("章节id必填！");
+                    return false;
+                }
+                if(n_title.length < 1){
+                    alert("标题必须填写");
+                    return false;
+                }
+                if(n_content.length < 1){
+                    alert("内容必须填写");
+                    return false;
+                }
+                var novel_list = JSON.parse(localStorage.getItem('local_novel_list'));
+                if(!novel_list){
+                    novel_list = [];
+                }
+                novel_list.push({
+                    chpaterid : n_chapterid,
+                    title : n_title,
+                    content : n_content,
+                });
+                localStorage.setItem('local_novel_list',JSON.stringify(novel_list));
+                alert("存储章节成功！");
+            });
+  </script>
